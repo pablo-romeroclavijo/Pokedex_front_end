@@ -1,0 +1,63 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.Pokedex{
+  background-color: grey;
+  border-radius: 20px;
+  align-items: center;
+
+}
+
+.pokemonlist{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.pokecard{
+  background-color: rgb(248, 248, 248);
+  width: 170px;
+  border-radius: 20px;
+  margin: 10px
+}
+
+.pokecard:hover{
+  background-color: rgb(69, 69, 69);
+  zoom: 125%
+}
+.pokecard:hover h3{
+  color: white;
+  color: rgb(248, 248, 248)
+}
+
+.pokecard:hover .stats{
+  display: block
+}
+
+
+
+h2{
+  padding-top: 10px;
+  width: 100%;
+}
+
+h3{
+  color: blue;
+}
+
+p{
+  color: black;
+  font-weight: bold ;
+}
+
+.pokecard img{
+  width: 120px
+}
