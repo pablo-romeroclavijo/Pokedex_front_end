@@ -73,6 +73,7 @@ const data = {
     
   ]
 }
+
 console.log(data)
 
 function App() {

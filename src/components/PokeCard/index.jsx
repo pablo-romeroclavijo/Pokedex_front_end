@@ -13,10 +13,12 @@ const PokeCard = ({pokemon, key}) => {
         <h3>{pokemon.name}</h3>
         <img src={pokemon.image}></img>
         <p style={{color: colorKey[pokemon.type]}}> Type: {pokemon.type}</p>
-        <div className="stats" style={{display:"none"}}>
-            <p>Stats</p>
-            {Object.keys(pokemon.stats).forEach(key => {console.log(key); <p>{key}</p>})}
-        </div>
+        <span className="stats">
+            <h5>Stats</h5>
+            {console.log(Object.keys(pokemon.stats))}
+            {Object.keys(pokemon.stats).map(key => 
+                <p>{key} : {pokemon.stats[key]}</p>)}
+        </span>
     </div>  
     );
 }
