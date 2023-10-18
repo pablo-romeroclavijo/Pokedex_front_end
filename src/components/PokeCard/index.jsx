@@ -1,26 +1,59 @@
-const PokeCard = ({pokemon, key}) => {
+import { useState, useEffect } from 'react'
+import Pokemon from '../../OOP/Pokemon'
 
-    const colorKey = {
-        fire:'rgb(248, 0, 0)',
-        water:'rgb(0, 0, 255)',
-        normal:'rgb(0, 0, 0)',
-        bug:'rgb(0, 248, 0)',
-        flying:'rgb(204, 0, 102)',
-    }
-    return (
-    
-    <div className="pokecard" key={key}>
-        <h3>{pokemon.name}</h3>
-        <img src={pokemon.image}></img>
-        <p style={{color: colorKey[pokemon.type]}}> Type: {pokemon.type}</p>
-        <span className="stats">
-            <h5>Stats</h5>
-            {console.log(Object.keys(pokemon.stats))}
-            {Object.keys(pokemon.stats).map(key => 
-                <p>{key} : {pokemon.stats[key]}</p>)}
-        </span>
-    </div>  
-    );
-}
+ const PokeCard = ({pokemonURL}) => {
+    console.log(pokemonURL)
+
+    const [reactObject, setReactObject] = useState()
+
+    useEffect(()=> {
+                getPokemon()
+                console.log('fetching2')
+            }, [])
+
+    async function getPokemon(){
+        console.log('url:', pokemonURL)
+        const pokemon = await Pokemon.buildPokemon(pokemonURL)
+        console.log(pokemon)
+        const Object = pokemon.pokeCardBuilder()
+        console.log("object:", Object)
+        setReactObject(Object)}
+
+    return ( 
+        reactObject 
+        );
+
+
+ }
+  
+ export default PokeCard;
+
+
+// async function PokeCard ({pokemonURL}) {
+//     console.log(pokemonURL)
+
+//     // const [reactObject, setReactObject] = useState()
+
+//     // async function getPokemon(){
+//     //     console.log('url:', pokemonURL)
+//     //     const pokemon = await Pokemon.buildPokemon(pokemonURL)
+//     //     console.log(pokemon)
+//     //     const Object = pokemon.pokeCardBuilder()
+//     //     setReactObject(Object)
+
+//     // }
+
+//     // useEffect(()=> {
+//     //     getPokemon()
+//     //     console.log('fetching2')
+//     // }, [])
+
+
+//     return (
+//         <p>pablo</p>
+//         //reactObject
+//     );
+// }
  
-export default PokeCard;
+// export default PokeCard;
+

@@ -1,5 +1,8 @@
 const Filter = () => {
-    return ( <p>asda</p> );
+    return ( <div className="filterBar">
+        <p></p>
+        
+        </div> );
 }
  
 export default Filter;
