@@ -1,4 +1,49 @@
+import bug from '../assets/Logos/bug.png'
+import dark from '../assets/Logos/dark.png'
+import dragon from '../assets/Logos/dragon.png'
+import electric from '../assets/Logos/electric.png'
+import fairy from '../assets/Logos/fairy.png'
+import fighting from '../assets/Logos/figthing.png'
+import fire from '../assets/Logos/fire.png'
+import flying from '../assets/Logos/flying.png'
+import ghost from '../assets/Logos/ghost.png'
+import grass from '../assets/Logos/grass.png'
+import ground from '../assets/Logos/ground.png'
+import ice from '../assets/Logos/ice.png'
+import normal from '../assets/Logos/normal.png'
+import poison from '../assets/Logos/poison.png'
+import psychic from '../assets/Logos/psychic.png'
+import rock from '../assets/Logos/rock.png'
+import steel from '../assets/Logos/steel.png'
+import water from '../assets/Logos/water.png'
+
+import Pokedex  from '../components/Pokedex'
+
+const logos = {
+    "bug" : bug,
+    "dark" : dark,
+    "electric" : electric,
+    "fairy" : fairy,
+    "fighting" : fighting,
+    "fire" : fire,
+    "flying" : flying,
+    "ghost"  : ghost,
+    "grass" : grass,
+    "ground" : ground,
+    "ice" : ice,
+    "normal" : normal,
+    "poison" : poison,
+    "psychic" :psychic,
+    "rock" : rock,
+    "steel" : steel,
+    "water" : water,
+    'dragon' : dragon
+}
+
+
+
 class Pokemon{
+
     constructor({id, stats, types, height, weight, name, sprites}){
         this.pokeID = id
         this.stats = stats.map(stat => {return ({name: stat.stat.name, value: stat.base_stat})})
@@ -25,13 +70,18 @@ class Pokemon{
     }
 
     pokeCardBuilder(){
-        console.log('pokebuilder')
-        console.log(this.stats)
+
+        //console.log('pokebuilder')
+        //console.log(this.stats)
         return(
-            <div className="pokecard" key={this.pokeID}>
+           
+                <div className="pokecard" key={this.pokeID}>
                 <h3>{this.name}</h3>
                 <img src={this.img}></img>
-                <p>Types: {this.types.join(', ')}</p>
+                <div className="types">
+                    <p>Types: </p> 
+                    {this.types.map(type=> <img value={type} src={logos[type]} className='typeText'/>)}
+                </div>
                 <div className="stats" >
                     <h5>Stats</h5>
                     {this.stats.map(stat=> 
@@ -39,7 +89,6 @@ class Pokemon{
                 </div>
             </div>  
         )
-    
     }
 }
 
