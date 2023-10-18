@@ -1,11 +1,14 @@
 import PokeCard from '../PokeCard'
 import Filter from '../Filter'
 import {useState, useEffect} from 'react'
+import Pagination from '../Pagination'
 
 
 const Pokedex = () => {
     const [pokemons, setPokemons] = useState([])
     const [filterValue, setFilter] = useState('all')
+    const [page, setPage] = useState(1)
+    const [displayPokemons, setDiplay] = useState([])
 
 
 
@@ -17,14 +20,17 @@ const Pokedex = () => {
         const results = data.results
         //console.log('data: ', results)
         setPokemons(results)
+
       }catch(error){
         console.log(error)
       }
     }
 
+  
 
     useEffect(()=> {
       fetchData()
+
   }, [filterValue])
 
 
@@ -36,11 +42,17 @@ const Pokedex = () => {
         <h2>Your Pokedex</h2>
             <div className="pokemonlist">
                 <Filter setFilter = {setFilter}/>
-                
-                {pokemons.map((pokemon, index) => 
-                  <PokeCard filterValue={filterValue} pokemonURL={pokemon.url} setFilter = {setFilter} key={index}/>
-                )
-            }
+                <Pagination page={page} length={pokemons.length} setPage={setPage}/>
+                <>
+                  {const displayPokemons = pokemons.slice(0,10);
+                  displayPokemons.map(pokemon=>
+                     {<PokeCard filterValue={filterValue} pokemonURL={pokemon.url} setFilter = {setFilter} key={index} page={page} index={index}/>}
+                    )
+                  }
+              
+                  
+                </>
+
             </div>
     </div>)
 }
