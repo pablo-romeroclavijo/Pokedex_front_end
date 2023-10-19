@@ -75,17 +75,23 @@ class Pokemon{
         //console.log(this.stats)
         return(
            
-                <div className="pokecard" key={this.pokeID}>
-                <h3>{this.name}</h3>
-                <img src={this.img}></img>
-                <div className="types">
-                    <p>Types: </p> 
-                    {this.types.map(type=> <img value={type} src={logos[type]} className='typeText'/>)}
-                </div>
-                <div className="stats" >
-                    <h5>Stats</h5>
-                    {this.stats.map(stat=> 
-                        <p>{stat.name}: {stat.value}</p>)}
+            <div className="pokecard" key={this.pokeID}>
+                <div className="pokecard-inner">
+                    <div className='pokecard-front'>
+                        <h3>{this.name}</h3>
+                        <img src={this.img}></img>
+                        <div className="types">
+                          
+                            {this.types.map(type=> <img value={type} src={logos[type]} className='typeText'/>)}
+                        </div>
+                    </div>
+                    <div className='pokecard-back'>
+                        <div className="stats" >
+                            <h5>Stats</h5>
+                            {this.stats.map(stat=> 
+                                <p>{stat.name}: {stat.value}</p>)}
+                        </div>
+                    </div>
                 </div>
             </div>  
         )
