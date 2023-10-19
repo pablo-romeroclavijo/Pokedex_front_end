@@ -5,9 +5,9 @@ const Pagination = ({length, setPage, page}) => {
 
     return ( 
     <div className="pagination">
-        <button onClick={()=>{setPage(page-1)}} class="previous round" >&#8249;</button>
+        <button onClick={()=>{page == 1 ? setPage(page) : setPage(page-1)}} class="previous round" >&#8249;</button>
         <p> Page {page} of {totalPages} </p>
-        <button onClick={()=>{setPage(page+1)}} class="next round" >&#8250;</button>
+        <button onClick={()=>{page == totalPages ? setPage(page) : setPage(page+1)}} class="next round" >&#8250;</button>
     </div> 
     );
 }
