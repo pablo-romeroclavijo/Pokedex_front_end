@@ -1,16 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&family=Pixelify+Sans&display=swap');
+
+body{
+  background-color:  rgb(59, 76, 202);;
+  font-family: 'Pixelify Sans';
+}
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  background-color: white;
+  margin:auto;
+  width: 1280px;
+  margin-bottom: 10px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .Pokedex{
-  background-color: grey;
+  font-family: 'Pixelify Sans';
+  background-color: white;
   border-radius: 20px;
   align-items: center;
+  width: 100%;
+  position: relative;
+  margin: auto;
+  margin-top: 60px;
+  text-align: center;
+  align-content: center;
+  margin-bottom: 10px;
+
 
 }
+
+.pokeImage{
+  display: inline-block;
+  text-align: center;
+  min-width: 1280px;
+  position: relative;
+  left: 0;
+  right: 0;
+}
+.pokeImage img{
+  display: inline-block;
+  max-width: 1280px;
+  width: 95%;
+  margin: 0;
+  filter: drop-shadow(7px 7px rgb(183, 176, 176)); 
+}
+.type-container{
+  display: block;
+  position: absolute;
+  bottom: 48px;
+  left: 135px;
+  align-items: center;
+  font-size: 25px;
+  color: black;
+  /* background-color: red; */
+  width: 130px;
+  height: 65px
+}
+
+.button-container{
+  display: flex;
+  position: absolute;
+  bottom: 95px;
+  left: 689px;
+  align-items: center;
+  /* background-color: red; */
+
+  width: 90px;
+  height: 28px;
+  justify-content: space-between;
+}
+
+.pokecard-container{
+  display: flex;
+  position: absolute;
+  top: 149px;
+  left: 98px;
+  /* background-color: blue; */
+  width: 658px;
+  height: 425px;
+  flex-flow: wrap;
+  justify-content: space-around;
+  align-items: center;
+  
+  
+
+}
+
+.pokemon-container{
+  display: block;
+  position: absolute;
+  top: 209px;
+  right: 89px;
+  background-color: green;
+  width: 344px;
+  height: 372px
+}
+
 
 .pokemonlist{
   display: flex;
@@ -25,11 +110,14 @@
 
 /* Pokecard styling */
 .pokecard{
+  display: flex;
   background-color: rgb(248, 248, 248);
-  width: 170px;
-  min-height: 250px;
-  border-radius: 20px;
-  margin: 5px;
+  width: 140px;
+  height: 180px;
+  border-radius: 10px;
+  margin: 3px;
+  justify-content: center;
+
 
 }
 
@@ -57,19 +145,20 @@
   background-color: transparent;
   color: white;
   transform: rotateY(180deg);
-  padding-top: 30px;
+  padding-top: 5px;
 
 }
 
 
 .pokecard-back p{
-  font-size: 10px;
+  font-size: 12px;
   color: black;
 }
 
 .pokecard-back h5{
   color: black;
-  margin: 2px
+  margin: 2px;
+  font-size: 15px;
 }
 
 
@@ -80,7 +169,9 @@ h2{
 }
 
 h3{
-  color: blue;
+  color: rgb(59, 76, 202);
+  font-family: 'Pixelify Sans';
+  text-shadow: 1px 1px 0px rgb(178, 178, 196);
 
 }
 
@@ -95,22 +186,128 @@ p{
 }
 
 .pokecard-front img{
-  width: 120px
+  width: 100px
 }
 
 .pokecard-front h3{
-  margin-top: 10px;
-  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 
 .select{
-  width:100%
+  width:100%;
+  vertical-align: middle;
+  margin-top: 2px;
+  
 }
 
-h1 img{
-  width: 180px
+.select select{
+  display: none;
+
+}
+
+#typeFilter{
+  display: block;
+  background-color: transparent;
+  border: transparent;
+  font-family: 'Pixelify Sans';
+  position: relative;
+  left: 25px
+
+}
+
+.select option{
+  display: block;
+  font-family: 'Pixelify Sans';
+}
+
+.type{
+  display: block;
+  font-size: 50px;
+  font-family: 'Pixelify Sans';
+}
+
+
+.h1{
+  text-shadow: 2px 1px 6px black;
+  width: 100%;
+  margin: 0;
+  padding-top: 20px;
+  font-size: 60px;
+  
+
+}
+
+.header{
+  width: 100%;
+  margin: 0;
+  background-color: rgb(204, 0, 0);
+  border-radius: 0px 0px 20px 20px;
+  box-shadow:inset 0px 0px 0px 5px black;
+  height: 180px;
+  
+}
+
+
+.h1 img{
+  width: 180px;
+  filter: drop-shadow(1px 3px black); 
+  position: relative;
+  top: 10px
+
+
+}
+
+.header .pokeball{
+  height:100px;
+  position: relative;
+  bottom: -27px
 }
 
 .types img{
-  width: 50px;
+  width: 55px;
+  filter: drop-shadow(3px 3px rgb(183, 176, 176));
+}
+
+/* .button-container{
+  display: flex;
+  position: relative;
+  border: solid red;
+  height: 15px;
+  top: 14px;
+  left: 2px;
+  justify-content: space-evenly;
+} */
+
+.previous-round{
+  /* border: solid black 1px; */
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+ 
+
+
+}
+
+.next-round{
+  /* border: solid black 1px; */
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  
+
+}
+
+.page-container{
+  position: absolute;
+  /* border: solid beige; */
+  width: 70px;
+  height: 30px;
+  right: 511px;
+  bottom: 26px;
+  text-align: center;
+}
+
+.page-container p{
+  margin: 0;
 }

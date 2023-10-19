@@ -3,7 +3,7 @@ import dark from '../assets/Logos/dark.png'
 import dragon from '../assets/Logos/dragon.png'
 import electric from '../assets/Logos/electric.png'
 import fairy from '../assets/Logos/fairy.png'
-import fighting from '../assets/Logos/figthing.png'
+import fighting from '../assets/Logos/fighting.png'
 import fire from '../assets/Logos/fire.png'
 import flying from '../assets/Logos/flying.png'
 import ghost from '../assets/Logos/ghost.png'
@@ -50,7 +50,7 @@ class Pokemon{
         this.types = types.map(type => type.type.name)
         this.height = height
         this.weight = weight
-        this.name = name
+        this.name = name[0].toUpperCase() + name.slice(1)
         this.img =  sprites.other["official-artwork"]["front_default"]
     }
 
@@ -89,7 +89,7 @@ class Pokemon{
                         <div className="stats" >
                             <h5>Stats</h5>
                             {this.stats.map(stat=> 
-                                <p>{stat.name}: {stat.value}</p>)}
+                                <p>{stat.name[0].toUpperCase() + stat.name.slice(1)}: {stat.value}</p>)}
                         </div>
                     </div>
                 </div>

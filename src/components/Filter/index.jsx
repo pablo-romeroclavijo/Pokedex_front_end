@@ -7,7 +7,7 @@ const Filter = ({setFilter}) => {
 
     return ( 
         <div className="select">
-            <label htmlFor='typeFilter'>Filter by type: </label>
+            <label htmlFor='typeFilter'>Type: </label>
             <select  onChange={handleFilter} id="typeFilter">
                 <option value="all" className="type">All types</option>
                 <option value="fire" className="type">Fire</option>

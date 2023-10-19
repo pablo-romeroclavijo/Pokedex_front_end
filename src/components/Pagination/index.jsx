@@ -1,14 +1,21 @@
 const Pagination = ({length, setPage, page}) => {
-    const itemsPerPage = 10
+    const itemsPerPage = 8
     const totalPages = Math.ceil(length / itemsPerPage);
     console.log('Pagination')
 
     return ( 
-    <div className="pagination">
-        <button onClick={()=>{page == 1 ? setPage(page) : setPage(page-1)}} class="previous round" >&#8249;</button>
-        <p> Page {page} of {totalPages} </p>
-        <button onClick={()=>{page == totalPages ? setPage(page) : setPage(page+1)}} class="next round" >&#8250;</button>
-    </div> 
+    <>
+   
+    <div className="button-container"> 
+        <box onClick={()=>{page == 1 ? setPage(page) : setPage(page-1)}} class="previous-round" ></box>
+        <box onClick={()=>{page == totalPages ? setPage(page) : setPage(page+1)}} class="next-round" ></box>
+    </div>
+    <div className="page-container">
+        <p className="pages"> {page} of {totalPages} </p>
+    </div>
+    
+    </>
+     
     );
 }
  

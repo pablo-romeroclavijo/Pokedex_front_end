@@ -3,6 +3,10 @@ import Filter from '../Filter'
 import {useState, useEffect} from 'react'
 import Pagination from '../Pagination'
 import Pokemon from '../../OOP/Pokemon'
+import pokedexImage from '../../assets/pokedex.png'
+
+const pokedexLogo = 'https://raw.githubusercontent.com/sleduardo20/pokedex/0671af442dff1d8f7141e49eb83b438885bbc9e9/public/img/logo.svg'
+
 
 
 const Pokedex = () => {
@@ -66,7 +70,7 @@ const Pokedex = () => {
       console.log('here')
       const toDisplay = []
 
-      for(let i = (page-1)*10 ; i < (page)*10; i++){
+      for(let i = (page-1)*8 ; i < (page)*8; i++){
           if(filtered[i]){
             toDisplay.push(filtered[i])}
       }
@@ -96,20 +100,28 @@ const Pokedex = () => {
 
   return (
     <div className="Pokedex">
-        <h2>Your Pokedex</h2>
-            <div className="pokemonlist">
-                <Filter setFilter = {setFilter}/>
-                <Pagination page={page} length={filtered == undefined ? pokemons.length : filtered.length} setPage={setPage}/>
-                <>{console.log(displayPokemons)}</>
-                <>
-                  {displayPokemons.map((pokemon, index)=>
-                  <PokeCard pokemonURL={pokemon.url} key={index}/>)}
-                </>
-                <>
-                  {console.log('---------------------')}
-                </>
-              
-            </div>
+      <div className="pokeImage">
+        <img src={pokedexImage}/>
+        <div className="pokecard-container">
+          <>
+            {displayPokemons.map((pokemon, index)=>
+            <PokeCard pokemonURL={pokemon.url} key={index}/>)}
+          </>
+        </div>
+        <div className="pokemon-container">
+          <p>asdfa</p>
+        </div>
+        <div className="type-container">
+          <Filter setFilter = {setFilter}/>
+        </div>
+
+        <div className="pagination-container">
+          <Pagination page={page} length={filtered == undefined ? pokemons.length : filtered.length} setPage={setPage}/>
+        </div>
+
+      </div>
+
+  
     </div>
   )
 }
