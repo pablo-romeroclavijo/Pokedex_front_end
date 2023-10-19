@@ -26,22 +26,25 @@ const Pokedex = () => {
   }
 
   async function setPokemonsDisplay(fetchData){
-    console.log('pokemons:', pokemons)
-    if(pokemons){
+    console.log('pokemons:', pokemons.length)
+    if(pokemons.length==0){
       console.log('fetching')
       const response = await fetchData()
       setPokemons(response)
-    }
+      const display = pokemons.slice(0, 10)
+      setDiplay(display)
+    }else{
     const display = pokemons.slice(0, 10)
     setDiplay(display)
-    console.log("displayPokemons:", displayPokemons)
+    console.log("displayPokemons:", displayPokemons)}
   }
 
   
 useEffect(()=> {  
     setPokemonsDisplay(fetchData)
     console.log('rendering')
-}, [filterValue])
+}, [filterValue, pokemons])
+
 
 
 
@@ -53,9 +56,9 @@ useEffect(()=> {
             <div className="pokemonlist">
                 <Filter setFilter = {setFilter}/>
                 <Pagination page={page} length={pokemons.length} setPage={setPage}/>
-                <>{console.log(pokemons)}</>
+                <>{console.log(displayPokemons)}</>
                 <>
-                    {pokemons.map((pokemon, index)=>
+                    {displayPokemons.map((pokemon, index)=>
                       <PokeCard filterValue={filterValue} pokemonURL={pokemon.url} setFilter = {setFilter} key={index} page={page} index={index}/>
                     )}
 
