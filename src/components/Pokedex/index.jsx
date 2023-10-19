@@ -12,26 +12,36 @@ const Pokedex = () => {
 
 
 
-    async function fetchData(){
-      //console.log('fetching')
-      try{
-        const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=150')
-        const data = await response.json()
-        const results = data.results
-        //console.log('data: ', results)
-        setPokemons(results)
-
-      }catch(error){
-        console.log(error)
-      }
+  async function fetchData(){
+    //console.log('fetching')
+    try{
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=150')
+      const data = await response.json()
+      const results = data.results
+      console.log('data: ', results)
+      return results
+    }catch(error){
+      console.log(error)
     }
+  }
+
+  async function setPokemonsDisplay(fetchData){
+    console.log('pokemons:', pokemons)
+    if(pokemons){
+      console.log('fetching')
+      const response = await fetchData()
+      setPokemons(response)
+    }
+    const display = pokemons.slice(0, 10)
+    setDiplay(display)
+    console.log("displayPokemons:", displayPokemons)
+  }
 
   
-
-    useEffect(()=> {
-      fetchData()
-
-  }, [filterValue])
+useEffect(()=> {  
+    setPokemonsDisplay(fetchData)
+    console.log('rendering')
+}, [filterValue])
 
 
 
@@ -43,18 +53,17 @@ const Pokedex = () => {
             <div className="pokemonlist">
                 <Filter setFilter = {setFilter}/>
                 <Pagination page={page} length={pokemons.length} setPage={setPage}/>
+                <>{console.log(pokemons)}</>
                 <>
-                  {const displayPokemons = pokemons.slice(0,10);
-                  displayPokemons.map(pokemon=>
-                     {<PokeCard filterValue={filterValue} pokemonURL={pokemon.url} setFilter = {setFilter} key={index} page={page} index={index}/>}
-                    )
-                  }
-              
-                  
-                </>
+                    {pokemons.map((pokemon, index)=>
+                      <PokeCard filterValue={filterValue} pokemonURL={pokemon.url} setFilter = {setFilter} key={index} page={page} index={index}/>
+                    )}
 
+                </>
+              
             </div>
-    </div>)
+    </div>
+    )
 }
  
 export default Pokedex;

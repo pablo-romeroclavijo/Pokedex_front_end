@@ -2,12 +2,12 @@ const Filter = ({setFilter}) => {
 
     function handleFilter(e){
         setFilter(e.target.value)
-        
+
     }
 
     return ( 
         <div className="select">
-            <label for='typeFilter'>Filter by type: </label>
+            <label htmlFor='typeFilter'>Filter by type: </label>
             <select  onChange={handleFilter} id="typeFilter">
                 <option value="all" className="type">All types</option>
                 <option value="fire" className="type">Fire</option>

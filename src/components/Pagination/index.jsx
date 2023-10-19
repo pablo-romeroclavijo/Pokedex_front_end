@@ -1,7 +1,7 @@
 const Pagination = ({length, setPage, page}) => {
     const itemsPerPage = 10
     const totalPages = Math.ceil(length / itemsPerPage);
-
+    console.log('Pagination')
 
     return ( 
     <div className="pagination">
