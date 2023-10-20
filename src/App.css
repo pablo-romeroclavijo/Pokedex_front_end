@@ -57,6 +57,57 @@ body{
   height: 65px
 }
 
+.stat-container{
+  display: flex;
+  position: absolute;
+  bottom: 47px;
+  left: 294px;
+  align-items: center;
+  font-size: 25px;
+  color: black;
+  /* background-color: red; */
+  width: 373px;
+  height: 108px;
+  border-radius: 10px;
+  justify-content: space-around;
+  flex-flow: wrap;
+}
+
+input[type="range"] {
+  overflow: hidden;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 12rem;
+}
+
+
+.ranger::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 23px;
+  height: 24px;
+  border: 0;
+  background-color: grey;
+  background: url('./assets/pokeball4.png');
+  box-shadow: -130px 0px 0px 125px #07491b;
+ 
+  
+  background-repeat: no-repeat;
+  cursor: pointer; 
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: rgb(112, 112, 112);
+  border-radius: 8px;
+  height: 20px ;
+
+
+}
+
+
+
 .button-container{
   display: flex;
   position: absolute;
@@ -82,18 +133,25 @@ body{
   justify-content: space-around;
   align-items: center;
   
-  
 
 }
 
 .pokemon-container{
-  display: block;
+  display: flex;
   position: absolute;
   top: 209px;
   right: 89px;
-  background-color: green;
+  align-items: center;
+  vertical-align: middle;
   width: 344px;
-  height: 372px
+  height: 372px;
+  flex-direction: column;
+}
+
+.pokemon-container img{
+  width: 200px;
+  margin: auto;
+
 }
 
 
@@ -158,7 +216,7 @@ body{
 .pokecard-back h5{
   color: black;
   margin: 2px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 

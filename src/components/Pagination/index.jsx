@@ -7,8 +7,8 @@ const Pagination = ({length, setPage, page}) => {
     <>
    
     <div className="button-container"> 
-        <box onClick={()=>{page == 1 ? setPage(page) : setPage(page-1)}} class="previous-round" ></box>
-        <box onClick={()=>{page == totalPages ? setPage(page) : setPage(page+1)}} class="next-round" ></box>
+        <span onClick={()=>{page == 1 ? setPage(page) : setPage(page-1)}} className="previous-round" ></span>
+        <span onClick={()=>{page == totalPages ? setPage(page) : setPage(page+1)}} className="next-round" ></span>
     </div>
     <div className="page-container">
         <p className="pages"> {page} of {totalPages} </p>

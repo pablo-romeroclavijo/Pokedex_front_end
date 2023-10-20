@@ -4,6 +4,8 @@ import {useState, useEffect} from 'react'
 import Pagination from '../Pagination'
 import Pokemon from '../../OOP/Pokemon'
 import pokedexImage from '../../assets/pokedex.png'
+import Stats from '../Stats'
+import pokeball from '../../assets/pokeball2.png'
 
 const pokedexLogo = 'https://raw.githubusercontent.com/sleduardo20/pokedex/0671af442dff1d8f7141e49eb83b438885bbc9e9/public/img/logo.svg'
 
@@ -15,6 +17,8 @@ const Pokedex = () => {
     const [page, setPage] = useState(1)
     const [filtered, setFiltered] = useState([])
     const [displayPokemons, setDiplay] = useState([])
+    const [statsFilter, setStats] = useState({hp: '1', attack: '1', defense: '1'})
+    const [bigScreen, setBigScreen] = useState(pokeball)
 
 
 
@@ -37,13 +41,16 @@ const Pokedex = () => {
     let filtered = []
     for(let i = 0; i < data.length; i++){
       const pokemon = await Pokemon.buildPokemon(data[i].url)
-      if(filterValue == 'all'){
-        filtered.push(data[i])
-   
-      }else if(pokemon.types.includes(filterValue)){
-        filtered.push(data[i])
-      }
-    }
+      // console.log('filtering', pokemon.stats)
+      // console.log(statsFilter.hp < pokemon.stats[0].value && statsFilter.attack < pokemon.stats[1].value && statsFilter.defense < pokemon.stats[2].value)
+      if(statsFilter.hp < pokemon.stats[0].value && statsFilter.attack < pokemon.stats[1].value && statsFilter.defense < pokemon.stats[2].value )
+          {if(filterValue == 'all'){
+            filtered.push(data[i])
+      
+          }else if(pokemon.types.includes(filterValue)){
+            filtered.push(data[i])
+          }
+      }}
     console.log('filterd: ', filtered)
     setFiltered(filtered)
   }
@@ -63,7 +70,7 @@ const Pokedex = () => {
     else if(filtered==0){
       console.log('filtering')
       const filtered = filter(pokemons)
-      setFiltered()
+      setFiltered(filtered)
     }
     
     else{
@@ -84,18 +91,12 @@ const Pokedex = () => {
   useEffect(()=>{
     filter(pokemons)
     setPage(1)
-  }, [filterValue])
+  }, [filterValue, statsFilter])
 
   useEffect(()=> {  
       console.log('rendering')
       setPokemonsDisplay()
   }, [pokemons, page, filtered])
-
-
-  // useEffect(()=>{
-  //   console.log('re-render')
-  //    console.log('display2:', displayPokemons)
-  // }, [displayPokemons])
 
 
   return (
@@ -105,17 +106,23 @@ const Pokedex = () => {
         <div className="pokecard-container">
           <>
             {displayPokemons.map((pokemon, index)=>
-            <PokeCard pokemonURL={pokemon.url} key={index}/>)}
+            <PokeCard pokemonURL={pokemon.url} key={index} setBigScreen={setBigScreen}/>)}
           </>
         </div>
         <div className="pokemon-container">
-          <p>asdfa</p>
+          <p>Loading...</p>
+          <img src= {bigScreen}></img>
         </div>
         <div className="type-container">
           <Filter setFilter = {setFilter}/>
         </div>
 
+        <div className="stat-container">
+          <Stats setFilter = {setStats} statsFilter={statsFilter}/>
+        </div>
+
         <div className="pagination-container">
+          
           <Pagination page={page} length={filtered == undefined ? pokemons.length : filtered.length} setPage={setPage}/>
         </div>
 

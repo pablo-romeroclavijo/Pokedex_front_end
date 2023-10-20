@@ -69,15 +69,15 @@ class Pokemon{
         }
     }
 
-    pokeCardBuilder(){
+    pokeCardBuilder(handleHover, handleHoverOut){
 
         //console.log('pokebuilder')
         //console.log(this.stats)
         return(
            
-            <div className="pokecard" key={this.pokeID}>
-                <div className="pokecard-inner">
-                    <div className='pokecard-front'>
+            <div className="pokecard" key={this.pokeID} onPointerEnter={handleHover} onPointerLeave={handleHoverOut} id={this.pokeID}  >
+                <div className="pokecard-inner" >
+                    <div className='pokecard-front' id={this.pokeID} >
                         <h3>{this.name}</h3>
                         <img src={this.img}></img>
                         <div className="types">
@@ -85,7 +85,7 @@ class Pokemon{
                             {this.types.map(type=> <img value={type} src={logos[type]} className='typeText'/>)}
                         </div>
                     </div>
-                    <div className='pokecard-back'>
+                    <div className='pokecard-back' id={this.pokeID}>
                         <div className="stats" >
                             <h5>Stats</h5>
                             {this.stats.map(stat=> 
