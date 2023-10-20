@@ -76,20 +76,20 @@ class Pokemon{
         return(
            
             <div className="pokecard" key={this.pokeID} onPointerEnter={handleHover} onPointerLeave={handleHoverOut} id={this.pokeID}  >
-                <div className="pokecard-inner" >
+                <div className="pokecard-inner" id={this.pokeID} >
                     <div className='pokecard-front' id={this.pokeID} >
-                        <h3>{this.name}</h3>
-                        <img src={this.img}></img>
-                        <div className="types">
-                          
+                        <h3 id={this.pokeID}>{this.name}</h3>
+                        <img id={this.pokeID} src={this.img}></img>
+
+                        <div className="types"id={this.pokeID}>  
                             {this.types.map(type=> <img value={type} src={logos[type]} className='typeText'/>)}
                         </div>
                     </div>
                     <div className='pokecard-back' id={this.pokeID}>
-                        <div className="stats" >
-                            <h5>Stats</h5>
+                        <div className="stats" id={this.pokeID} >
+                            <h5 id={this.pokeID}>Stats</h5>
                             {this.stats.map(stat=> 
-                                <p>{stat.name[0].toUpperCase() + stat.name.slice(1)}: {stat.value}</p>)}
+                                <p id={this.pokeID}>{stat.name[0].toUpperCase() + stat.name.slice(1)}: {stat.value}</p>)}
                         </div>
                     </div>
                 </div>
