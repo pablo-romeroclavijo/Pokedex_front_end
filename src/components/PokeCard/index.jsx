@@ -14,8 +14,12 @@ import pokeball from '../../assets/pokeball2.png'
 
     function handleHover(e){
         console.log("in")
-        console.log(e.target)
-        setBigScreen(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${e.target.id}.png`)
+        try{
+            console.log(e.target)
+            setBigScreen(`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${e.target.id}.png`)
+        }catch(error){
+            setBigScreen(pokeball)
+        }
     }
 
     function handleHoverOut(){
